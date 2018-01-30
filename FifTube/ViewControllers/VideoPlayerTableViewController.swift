@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate {
 
     
 
-    private let reuseIdentifiers : [String] = [ "videoPlayerCell", "videoDescriptionCell", "videoAddCommentCell", "videoCommentListCell"]
+    private let reuseIdentifiers : [String] = [ "videoPlayerCell", "videoDescriptionCell", "videoAddCommentCell", "commentCell"]
     
     let nibVidPlayer = UINib(nibName: "VideoPlayerTableViewCell", bundle: nil)
     let nibVidDescription = UINib(nibName: "VideoDescriptionTableViewCell", bundle: nil)
     let nibVidAddComment = UINib(nibName: "AddCommentTableViewCell", bundle: nil)
-    let nibVidCommentList = UINib(nibName: "CommentListTableViewCell", bundle: nil)
+    let nibVidCommentList = UINib(nibName: "CommentCell", bundle: nil)
+    
+    let commentIdOffset : Int = 3
     
     var videoEntry: VideoPlayerEntryModel?
+    var commentList: [CommentModel]?
+    var totalCount: Int = 0
+    var currentPage: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +70,25 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
     
     func setup(entry: VideoPlayerEntryModel) {
         self.videoEntry = entry
+        
+        //Generate comments
+        let parameterSub : JSON = ["value" : self.videoEntry?.id]
+        let subJSON = JSON(parameterSub)
+        let parameters = [ "currentPage" : currentPage, "username" : FifTubeManager.sharedInstance.getUsername(), "data" : parameterSub.rawValue, "descending" : false ] as [String : Any]
+        CommentDeserializer().deserialize(params: parameters, completion: deserializationCompleted)
+    }
+    
+    func deserializationCompleted(commentItemList: [CommentModel], totalCount: Int) {
+        self.totalCount = totalCount
+        
+        if let _ = commentList{
+            self.commentList!.append(contentsOf: commentItemList)
+        } else {
+            self.commentList = commentItemList
+        }
+    
+        tableView.reloadData()
+        
     }
     
     func onBackButton() {
@@ -74,7 +99,11 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        if let comments = self.commentList {
+            return self.commentIdOffset + comments.count
+        } else {
+            return self.commentIdOffset
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,18 +114,16 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[indexPath.section], for: indexPath)
         
                 print("VideoPlayerTableViewController cellForRowAt")
 
-        setupCell(cell, forSection: indexPath.section, withEntry: videoEntry!)
+        setupCell(cell, forSection: indexPath.section)
         
         return cell
     }
     
-    func setupCell(_ cell: UITableViewCell, forSection: Int, withEntry: VideoPlayerEntryModel)
+    func setupCell(_ cell: UITableViewCell, forSection: Int)
     {
         switch forSection {
         case 0: //videoplayer
@@ -106,7 +133,10 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         case 1:
             let descCel = cell as! VideoDescriptionTableViewCell
             descCel.setup(withEntry: self.videoEntry!)
+        case 2: break
         default:
+            let descCel = cell as! CommentCell
+            descCel.setup(withEntry: commentList![forSection - commentIdOffset])
             break
         }
     }

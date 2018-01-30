@@ -16,7 +16,7 @@ class AddCommentTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        commentTextField.text = ""
         commentTextField.layer.cornerRadius = 6
         commentTextField.layer.masksToBounds = true
         

@@ -13,7 +13,9 @@ class ChannelDetailCollectionViewController: UICollectionViewController, UIColle
     private let reuseIdentifier = "videoCategoryCell"
     var channelName: String! = ""
     var categories: [String] = []
+    var channelId: String?
     var videoPlayerEntry: VideoPlayerEntryModel?
+    var channelItem : ChannelListItemModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +53,9 @@ class ChannelDetailCollectionViewController: UICollectionViewController, UIColle
         collectionView?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
     }
     
-    func setup(channelName: String) {
-        self.channelName = channelName
+    func setup(channelItem: ChannelListItemModel) {
+        self.channelItem = channelItem
+        self.channelName = self.channelItem?.title
         categories.append(channelName)
     }
     
@@ -93,7 +96,8 @@ class ChannelDetailCollectionViewController: UICollectionViewController, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCategoryCell
         
         // Configure the cell
-        cell.setup(videoListType: VideoListType.ChannelDetail, isUseMock: true )
+        cell.channelId = (channelItem?.id)!
+        cell.setup(videoListType: VideoListType.ChannelDetail, isUseMock: false )
         cell.delegate = self
         return cell
     }
@@ -112,7 +116,7 @@ class ChannelDetailCollectionViewController: UICollectionViewController, UIColle
     }
     
     func didSelectVideo(videoItem: VideoItemModel) {
-        videoPlayerEntry = VideoEntryDeserializer.getMock()
+        videoPlayerEntry = VideoEntryDeserializer().deserializeFromMock()
         
         performSegue(withIdentifier: "videoDetailSegue", sender: self)
     }

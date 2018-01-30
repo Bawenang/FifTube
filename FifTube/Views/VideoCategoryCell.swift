@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 enum VideoListType : Int {
     case AllVideo, RecentViews, TopViews, TopLikes, Favorite, ChannelDetail
@@ -96,7 +97,9 @@ class VideoCategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICol
             if (useMock) {
                 videoItemList = ChannelDetailVideoItemDeserializer().deserializeFromMock()
             } else {
-                let parameters = [ "currentPage" : currentPage, "username" : FifTubeManager.sharedInstance.getUsername() ] as [String : Any]
+                let parameterSub : JSON = ["value" : (channelId)]
+                let subJSON = JSON(parameterSub)
+                let parameters = [ "currentPage" : currentPage, "username" : FifTubeManager.sharedInstance.getUsername(), "data" : parameterSub.rawValue ] as [String : Any]
                 ChannelDetailVideoItemDeserializer().deserialize(params: parameters, completion: deserializationCompleted)
             }
         }

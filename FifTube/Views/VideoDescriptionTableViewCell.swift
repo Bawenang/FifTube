@@ -38,8 +38,8 @@ class VideoDescriptionTableViewCell: UITableViewCell {
         
         description_3.text = withEntry.description
         
-        faveButton.isSelected = withEntry.isFavorite
-        faveButton.isSelected = withEntry.isLike
+        faveButton.isSelected = withEntry.favorite
+        faveButton.isSelected = withEntry.liked
     }
     
 }

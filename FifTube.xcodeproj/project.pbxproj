@@ -57,6 +57,10 @@
 		08B881552017B14500912483 /* FavoriteVideoItemDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B881542017B14500912483 /* FavoriteVideoItemDeserializer.swift */; };
 		08B881572017B52600912483 /* ChannelDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B881562017B52600912483 /* ChannelDetailCollectionViewController.swift */; };
 		08B881592017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B881582017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift */; };
+		08E2AF0A2020EB6D00473FEF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF082020EB6D00473FEF /* CommentCell.swift */; };
+		08E2AF0B2020EB6D00473FEF /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08E2AF092020EB6D00473FEF /* CommentCell.xib */; };
+		08E2AF0D2020ECD500473FEF /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF0C2020ECD500473FEF /* CommentModel.swift */; };
+		08E2AF0F2020EDB600473FEF /* CommentDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF0E2020EDB600473FEF /* CommentDeserializer.swift */; };
 		08E860DA2016DFCE0068A198 /* VideoItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E860D92016DFCE0068A198 /* VideoItemCellDelegate.swift */; };
 		08E860DC2016F3FC0068A198 /* TrendingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E860DB2016F3FC0068A198 /* TrendingCollectionViewController.swift */; };
 		E1E082BD0917778EFC347F9D /* Pods_FifTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA395340EC05BBC21860B38 /* Pods_FifTube.framework */; };
@@ -136,6 +140,10 @@
 		08B881542017B14500912483 /* FavoriteVideoItemDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVideoItemDeserializer.swift; sourceTree = "<group>"; };
 		08B881562017B52600912483 /* ChannelDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		08B881582017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailVideoItemDeserializer.swift; sourceTree = "<group>"; };
+		08E2AF082020EB6D00473FEF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		08E2AF092020EB6D00473FEF /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		08E2AF0C2020ECD500473FEF /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		08E2AF0E2020EDB600473FEF /* CommentDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDeserializer.swift; sourceTree = "<group>"; };
 		08E860D92016DFCE0068A198 /* VideoItemCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemCellDelegate.swift; sourceTree = "<group>"; };
 		08E860DB2016F3FC0068A198 /* TrendingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCollectionViewController.swift; sourceTree = "<group>"; };
 		ABB0152E1BC016714035AEB7 /* Pods-FifTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FifTube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FifTube/Pods-FifTube.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +269,8 @@
 				08B881582017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift */,
 				086FE488201984B20073A5FD /* VideoPlayerEntryModel.swift */,
 				086FE48E2019B2D70073A5FD /* VideoEntryDeserializer.swift */,
+				08E2AF0C2020ECD500473FEF /* CommentModel.swift */,
+				08E2AF0E2020EDB600473FEF /* CommentDeserializer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,6 +300,8 @@
 				086FE4902019BEFF0073A5FD /* VideoCategoryDelegate.swift */,
 				0897B31E201AD7FE00E575B1 /* VideoEntrySetupBase.swift */,
 				08026166201F518A00F85B36 /* VideoPlayerDelegate.swift */,
+				08E2AF082020EB6D00473FEF /* CommentCell.swift */,
+				08E2AF092020EB6D00473FEF /* CommentCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +456,7 @@
 				0817C696201463D800C9B292 /* TopTabBarCell.xib in Resources */,
 				089C7C902013010C0011A341 /* Assets.xcassets in Resources */,
 				089C7C8E2013010C0011A341 /* Main.storyboard in Resources */,
+				08E2AF0B2020EB6D00473FEF /* CommentCell.xib in Resources */,
 				08B8814D201785F100912483 /* ChannelsTableViewCell.xib in Resources */,
 				086FE48D20199CC90073A5FD /* CommentListTableViewCell.xib in Resources */,
 			);
@@ -548,9 +561,11 @@
 				089C7CC120137E190011A341 /* TopTabBarView.swift in Sources */,
 				086FE48C20199CC90073A5FD /* CommentListTableViewCell.swift in Sources */,
 				08B8814120176C4700912483 /* TopViewsVideoItemDeserializer.swift in Sources */,
+				08E2AF0F2020EDB600473FEF /* CommentDeserializer.swift in Sources */,
 				089C7C872013010C0011A341 /* AppDelegate.swift in Sources */,
 				08B881452017779E00912483 /* HomeCollectionViewController.swift in Sources */,
 				08B8815120179CAC00912483 /* ChannelListItemDeserializer.swift in Sources */,
+				08E2AF0D2020ECD500473FEF /* CommentModel.swift in Sources */,
 				08E860DC2016F3FC0068A198 /* TrendingCollectionViewController.swift in Sources */,
 				08B881572017B52600912483 /* ChannelDetailCollectionViewController.swift in Sources */,
 				08B8814F20179C3300912483 /* ChannelListItemModel.swift in Sources */,
@@ -560,6 +575,7 @@
 				08B8814C201785F100912483 /* ChannelsTableViewCell.swift in Sources */,
 				0817C6A02014A5EB00C9B292 /* BaseVideoItemDeserializer.swift in Sources */,
 				089C7CC32013919F0011A341 /* Extensions.swift in Sources */,
+				08E2AF0A2020EB6D00473FEF /* CommentCell.swift in Sources */,
 				0897B31F201AD7FE00E575B1 /* VideoEntrySetupBase.swift in Sources */,
 				0817C695201463D800C9B292 /* TopTabBarCell.swift in Sources */,
 				08200B84201C89FC00A70E9D /* FifTubeManager.swift in Sources */,

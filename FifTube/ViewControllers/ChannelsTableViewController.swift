@@ -15,6 +15,7 @@ class ChannelsTableViewController: UITableViewController {
     var useMock : Bool = false
     
     var selectedIdx: Int?
+    var channelId: String?
     
     var currentPage : Int = 1
     var totalCount : Int = 0
@@ -68,6 +69,7 @@ class ChannelsTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIdx = indexPath.section
+        channelId = channelListItems?[selectedIdx!].id!
         performSegue(withIdentifier: "channelDetailsSegue", sender: self)
     }
     
@@ -75,7 +77,9 @@ class ChannelsTableViewController: UITableViewController {
         if segue.identifier == "channelDetailsSegue" {
             let selectedCell = tableView.cellForRow(at: IndexPath(row: 0, section: selectedIdx!)) as! ChannelsTableViewCell
             let dest = segue.destination as! ChannelDetailCollectionViewController
-            dest.setup(channelName: selectedCell.titleLabel.text!)
+            
+            dest.setup(channelItem: (channelListItems?[selectedIdx!])!)
+            
         }
     }
     

@@ -15,6 +15,7 @@ class TrendingCollectionViewController: UICollectionViewController, UICollection
     private let reuseIdentifier = "videoCategoryCell"
     var categories: [String] = ["Top 10 Views", "Top 10 Likes"]
     var videoPlayerEntry: VideoPlayerEntryModel?
+    var videoItem: VideoItemModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +109,15 @@ class TrendingCollectionViewController: UICollectionViewController, UICollection
     }
     
     func didSelectVideo(videoItem: VideoItemModel) {
-        videoPlayerEntry = VideoEntryDeserializer.getMock()
+        VideoEntryDeserializer().deserialize(videoId: videoItem.id, completion: deserializationCompleted)
+        self.videoItem = videoItem
+        
+    }
+    
+    func deserializationCompleted(videoEntry: VideoPlayerEntryModel) {
+        
+        self.videoPlayerEntry = videoEntry
+        self.videoPlayerEntry?.thumbnail = self.videoItem?.thumbnail
         
         performSegue(withIdentifier: "videoDetailSegue", sender: self)
     }

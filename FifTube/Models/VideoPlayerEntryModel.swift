@@ -15,20 +15,23 @@ class VideoCommentEntryModel {
 }
 
 class VideoPlayerEntryModel{
-    var vidUrl: String?
+    var id: String?
+    var url: String?
     var title: String = "Video Placeholder"
     var createdDate: Date = Date()
-    var uploader: String = "Mr. X"
-    var views: Int = 0
-    var likes: Int = 0
+    var createdBy: String = "Mr. X"
+    var thumbnailUrl: String?
+    var thumbnail: UIImage?
+    var totalViews: Int = 0
+    var totalLikes: Int = 0
     var description: String?
-    var isFavorite: Bool = false
-    var isLike: Bool = false
+    var favorite: Bool = false
+    var liked: Bool = false
     var commentList: [VideoCommentEntryModel]?
     
     func createDescription1() -> String {
         
-        let descStr = "\(createdDate.mediumDate) | \(createdDate.shortTime) | by \(self.uploader)"
+        let descStr = "\(createdDate.mediumDate) | \(createdDate.shortTime) | by \(self.createdBy)"
         
         return descStr
     }
@@ -40,7 +43,7 @@ class VideoPlayerEntryModel{
             commentCount = comments.count
         }
         
-        let descStr = "\(getSimpleIntString(fromInt: self.views)) views • \(getSimpleIntString(fromInt: self.likes)) views • \(getSimpleIntString(fromInt: commentCount)) comments"
+        let descStr = "\(getSimpleIntString(fromInt: self.totalViews)) views • \(getSimpleIntString(fromInt: self.totalLikes)) likes • \(getSimpleIntString(fromInt: commentCount)) comments"
         
         return descStr
     }

@@ -95,7 +95,7 @@ class FavoriteCollectionViewController: UICollectionViewController, UICollection
     }
     
     func didSelectVideo(videoItem: VideoItemModel) {
-        videoPlayerEntry = VideoEntryDeserializer.getMock()
+        videoPlayerEntry = VideoEntryDeserializer().deserializeFromMock()
         
         performSegue(withIdentifier: "videoDetailSegue", sender: self)
     }

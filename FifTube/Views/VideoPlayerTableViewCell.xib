@@ -18,9 +18,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eu-Aw-HTz" customClass="VideoPlayerView" customModule="FifTube" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eu-Aw-HTz" customClass="WistiaFlatPlayerView" customModule="WistiaKit">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JBl-Yk-m8f" userLabel="Thumbnail">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JBl-Yk-m8f" secondAttribute="bottom" id="3ab-Ck-6os"/>
+                            <constraint firstAttribute="trailing" secondItem="JBl-Yk-m8f" secondAttribute="trailing" id="4BJ-80-N69"/>
+                            <constraint firstItem="JBl-Yk-m8f" firstAttribute="top" secondItem="7eu-Aw-HTz" secondAttribute="top" id="t2F-5F-3OF"/>
+                            <constraint firstItem="JBl-Yk-m8f" firstAttribute="leading" secondItem="7eu-Aw-HTz" secondAttribute="leading" id="v4r-Zd-mTy"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -32,7 +43,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="videoView" destination="7eu-Aw-HTz" id="FJl-aS-x5W"/>
+                <outlet property="thumbnailView" destination="JBl-Yk-m8f" id="e8X-OB-G2h"/>
+                <outlet property="wistiaPlayerView" destination="7eu-Aw-HTz" id="Atb-Pt-CF9"/>
             </connections>
             <point key="canvasLocation" x="52" y="104.5"/>
         </tableViewCell>

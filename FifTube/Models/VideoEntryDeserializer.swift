@@ -7,32 +7,84 @@
 //
 
 import Foundation
+import Alamofire
+import AlamofireImage
+import SwiftyJSON
 
 
 class VideoEntryDeserializer {
-    func deserialize() -> [VideoPlayerEntryModel]? {
-        return deserializeFromMock() //Just use mock for now. Will be using RESTful API
-    }
     
-   func deserializeFromMock() -> [VideoPlayerEntryModel]? {
+    let headerEncoding : String = "application/x-www-form-urlencoded"
+    
+    var command : String = "https://fema-dev.fifgroup.co.id/fema-video-service/api/m/fiftube/"
+    
+    func deserialize(videoId: String, completion: @escaping (VideoPlayerEntryModel)->Void) {
         
-        var itemList : [VideoPlayerEntryModel] = []
+        print ("videoId: \(videoId)")
         
-        //Create 10 items for mock
-        for _ in 0...9 {
-            let video = VideoPlayerEntryModel()
-            video.vidUrl = "https://youtu.be/VuuTavE58y4"
-            itemList.append(video)
+        let headers = [
+            "X-Auth-Token" : FifTubeManager.sharedInstance.getToken(),
+            "Content-Type" : headerEncoding
+        ]
+        
+        let commandUrl = URL(string: "\(command)\(videoId)")
+    
+        
+        Alamofire.request(commandUrl!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
+            
+            
+            if((responseData.result.value) != nil) {
+                
+                /*
+                 if let requestBody = responseData.request?.httpBody {
+                 do {
+                 let jsonArray = try JSONSerialization.jsonObject(with: requestBody, options: [])
+                 print("Array: \(jsonArray)")
+                 }
+                 catch {
+                 print("Error: \(error)")
+                 }
+                 }
+                 */
+                
+                let resultJSON = JSON(responseData.result.value!)
+                
+                //print (responseData.result.value!)
+                
+                let entry: VideoPlayerEntryModel = VideoPlayerEntryModel()
+                
+                if let errCode = resultJSON["status"].int {
+                    if let errMessage = resultJSON["message"].string {
+                        print("Error getting videos. CODE (\(errCode)) : \(errMessage)")
+                    }
+                } else {
+
+                    entry.id = resultJSON["id"].string!
+                    entry.url = resultJSON["url"].string!
+                    entry.thumbnailUrl = resultJSON["thumbnailUrl"].string!
+                    entry.title = resultJSON["title"].string!
+                    entry.totalLikes = resultJSON["totalLike"].int!
+                    entry.totalViews = resultJSON["totalViewer"].int!
+                    entry.description = resultJSON["description"].string!
+                    entry.createdBy = resultJSON["createdBy"].string!
+                    entry.createdDate = Date(timeIntervalSince1970: TimeInterval(resultJSON["createdDate"].double! / 1000))
+                }
+                
+                completion(entry)
+                
+            }
         }
-        
-        return itemList
+
     }
-    
-    static func getMock() -> VideoPlayerEntryModel {
+
+
+
+   func deserializeFromMock() -> VideoPlayerEntryModel? {
+
         let videoPlayerEntry = VideoPlayerEntryModel()
         
         
-        videoPlayerEntry.vidUrl = "https://youtu.be/VuuTavE58y4"
+        videoPlayerEntry.url = "https://youtu.be/VuuTavE58y4"
         videoPlayerEntry.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         
         var comments : [VideoCommentEntryModel] = []

@@ -34,9 +34,25 @@ class BaseVideoItemDeserializer {
         
         
         Alamofire.request(command, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
+
+            
             if((responseData.result.value) != nil) {
                 
+                /*
+                if let requestBody = responseData.request?.httpBody {
+                    do {
+                        let jsonArray = try JSONSerialization.jsonObject(with: requestBody, options: [])
+                        print("Array: \(jsonArray)")
+                    }
+                    catch {
+                        print("Error: \(error)")
+                    }
+                }
+                 */
+                
                 let resultJSON = JSON(responseData.result.value!)
+                
+                //print (responseData.result.value!)
                 
                 var videoItemList: [VideoItemModel] = []
                 
@@ -78,6 +94,12 @@ class BaseVideoItemDeserializer {
                          */
                         
                     }
+                } else {
+                    if let errCode = resultJSON["status"].int {
+                        if let errMessage = resultJSON["message"].string {
+                            print("Error getting videos. CODE (\(errCode)) : \(errMessage)")
+                        }
+                    }
                 }
                 
                 //print(resultJSON)
@@ -92,14 +114,14 @@ class BaseVideoItemDeserializer {
     internal func loadImages(videoItemList: [VideoItemModel]) {
         for i in 0 ... (videoItemList.count - 1) {
             //Load thumbnails
-            print ("Thumbnail URL: \(videoItemList[i].thumbnailUrl!)")
+            //print ("Thumbnail URL: \(videoItemList[i].thumbnailUrl!)")
             Alamofire.request(videoItemList[i].thumbnailUrl!, method: .get).responseImage() { (response) in
-                print("Thumbnail req finished")
+                //print("Thumbnail req finished")
                 if(response.error == nil) {
                     self.imageLoadCount += 1
                     
                     if let image = response.result.value {
-                        print("image downloaded: \(image)")
+                        //print("image downloaded: \(image)")
                         
                         videoItemList[i].thumbnail = image
 

@@ -18,6 +18,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     var categories: [String] = ["All Videos", "Recent Views"]
     
     var videoPlayerEntry: VideoPlayerEntryModel?
+    var videoItem: VideoItemModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +65,17 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func didSelectVideo(videoItem: VideoItemModel) {
-        videoPlayerEntry = VideoEntryDeserializer.getMock()
+        //videoPlayerEntry = VideoEntryDeserializer.getMock()
+        VideoEntryDeserializer().deserialize(videoId: videoItem.id, completion: deserializationCompleted)
+        self.videoItem = videoItem
+        
+
+    }
+    
+    func deserializationCompleted(videoEntry: VideoPlayerEntryModel) {
+        
+        self.videoPlayerEntry = videoEntry
+        self.videoPlayerEntry?.thumbnail = self.videoItem?.thumbnail
         
         performSegue(withIdentifier: "videoDetailSegue", sender: self)
     }

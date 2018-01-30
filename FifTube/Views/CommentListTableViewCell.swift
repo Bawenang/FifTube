@@ -10,6 +10,11 @@ import UIKit
 
 class CommentListTableViewCell: UITableViewCell {
 
+    let reusableCellId = "commentCell"
+    let nibVideoItemCell = UINib(nibName: "CommentCell", bundle: nil)
+    
+    
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

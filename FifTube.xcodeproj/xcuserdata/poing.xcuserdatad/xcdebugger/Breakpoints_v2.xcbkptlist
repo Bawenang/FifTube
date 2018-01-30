@@ -31,11 +31,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Views/VideoCategoryCell.swift"
-            timestampString = "538926006.957381"
+            timestampString = "539017480.842968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "tapFaveButton(fromCell:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -47,11 +47,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/ViewControllers/TrendingCollectionViewController.swift"
-            timestampString = "538926006.957553"
+            timestampString = "539031983.919131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -63,11 +63,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/ViewControllers/TrendingCollectionViewController.swift"
-            timestampString = "538926006.957646"
+            timestampString = "539031983.919734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -79,11 +79,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Views/VideoCategoryCell.swift"
-            timestampString = "538926006.957727"
+            timestampString = "539017480.843079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -159,11 +159,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Views/VideoCategoryCell.swift"
-            timestampString = "538926006.9578789"
+            timestampString = "539017480.843191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "setup(videoListType:isUseMock:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -175,12 +175,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/ViewControllers/HomeCollectionViewController.swift"
-            timestampString = "538926006.957973"
+            timestampString = "539031983.920185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "prepare(for:sender:)"
+            landmarkName = "deserializationCompleted(videoEntry:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -191,12 +191,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/ViewControllers/VideoPlayerTableViewController.swift"
-            timestampString = "538926006.958073"
+            timestampString = "539031983.920254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "deserializationCompleted(commentItemList:totalCount:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -207,43 +207,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Views/VideoPlayerTableViewCell.swift"
-            timestampString = "538926006.958235"
+            timestampString = "539028105.55337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "createAndPlayPlayer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FifTube/Views/VideoPlayerTableViewCell.swift"
-            timestampString = "538926006.958364"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "createAndPlayPlayer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FifTube/Views/VideoPlayerTableViewCell.swift"
-            timestampString = "538926006.958439"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
@@ -255,7 +223,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/VideoPlayerEntryModel.swift"
-            timestampString = "538926006.9585561"
+            timestampString = "539028105.554121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
