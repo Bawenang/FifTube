@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.6.0)
+  - Alamofire-SwiftyJSON (3.0.0):
+    - Alamofire (~> 4.5)
+    - SwiftyJSON (~> 4.0.0)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
+  - SwiftyJSON (4.0.0)
+  - WistiaKit (0.30.3):
+    - AlamofireImage (~> 3.0)
+    - WistiaKitCore
+  - WistiaKitCore (0.30.3):
+    - Alamofire (~> 4.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - Alamofire-SwiftyJSON
+  - AlamofireImage (~> 3.3)
+  - SwiftyJSON
+  - WistiaKit
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  WistiaKit: 56e3b2266bc1b4aba24924839ba013d564060325
+  WistiaKitCore: c5a5e5874fa32d38257d7a4eeead975f810fc714
+
+PODFILE CHECKSUM: be75309c213f4b73fefae00ab9c8eac65b2a2222
+
+COCOAPODS: 1.4.0

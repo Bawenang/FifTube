@@ -1,0 +1,6 @@
+framework module Pods_FifTube {
+  umbrella header "Pods-FifTube-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -98,4 +98,6 @@ class VideoItemCell: UICollectionViewCell {
         videoItem?.isFavorite = !faveButton.isSelected
         faveButton.isSelected = !faveButton.isSelected
     }
+    
+    
 }
