@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.842152"
+            timestampString = "539068613.84886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Managers/FifTubeManager.swift"
-            timestampString = "538909377.268502"
+            timestampString = "539068613.848949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.842302"
+            timestampString = "539068613.849084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.842375"
+            timestampString = "539068613.849149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.842442"
+            timestampString = "539068613.849208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.8425061"
+            timestampString = "539068613.849269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.842567"
+            timestampString = "539068613.849321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.842839"
+            timestampString = "539068613.849463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.843771"
+            timestampString = "539068613.849557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/BaseVideoItemDeserializer.swift"
-            timestampString = "539017480.843841"
+            timestampString = "539068613.849611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Views/VideoPlayerTableViewCell.swift"
-            timestampString = "539028105.554196"
+            timestampString = "539068613.849721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "wistiaPlayer(_:didChangeStateTo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,12 +362,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FifTube/Models/CommentDeserializer.swift"
-            timestampString = "539031983.920364"
+            timestampString = "539068613.849779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
             landmarkName = "deserialize(params:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FifTube/Views/AddCommentTableViewCell.swift"
+            timestampString = "539068613.850281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "tapSubmitButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FifTube/Models/AddCommentHandler.swift"
+            timestampString = "539068613.8503439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "add(params:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FifTube.AddCommentHandler.add(params: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (FifTube.CommentModel) -&gt; ()) -&gt; ()"
+                  moduleName = "FifTube"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/poing/Documents/_FEMA/FEMA/FifTube/FifTube/Models/AddCommentHandler.swift"
+                  timestampString = "539058400.73102"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "554">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in FifTube.AddCommentHandler.add(params: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (FifTube.CommentModel) -&gt; ()) -&gt; ()"
+                  moduleName = "FifTube"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/poing/Documents/_FEMA/FEMA/FifTube/FifTube/Models/AddCommentHandler.swift"
+                  timestampString = "539058400.7336299"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FifTube/Models/AddCommentHandler.swift"
+            timestampString = "539068613.850412"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "add(params:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

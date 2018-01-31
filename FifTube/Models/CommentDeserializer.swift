@@ -79,13 +79,15 @@ class CommentDeserializer {
                         
                         let totalCount = resultJSON["totalCount"].int!
                         
+                        
+                        
                         completion(comments, totalCount)
-                        print(resultJSON)
+                        print("Comments JSON: \(resultJSON)")
                     }
                 } else {
                     if let errCode = resultJSON["status"].int {
                         if let errMessage = resultJSON["message"].string {
-                            print("Error getting videos. CODE (\(errCode)) : \(errMessage)")
+                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
                         }
                     }
                 }

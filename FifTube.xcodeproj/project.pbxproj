@@ -57,6 +57,9 @@
 		08B881552017B14500912483 /* FavoriteVideoItemDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B881542017B14500912483 /* FavoriteVideoItemDeserializer.swift */; };
 		08B881572017B52600912483 /* ChannelDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B881562017B52600912483 /* ChannelDetailCollectionViewController.swift */; };
 		08B881592017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B881582017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift */; };
+		08E24FE520213DEE00639168 /* AddCommentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E24FE420213DEE00639168 /* AddCommentHandler.swift */; };
+		08E24FE7202140A700639168 /* AddCommentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E24FE6202140A700639168 /* AddCommentDelegate.swift */; };
+		08E24FE9202163A400639168 /* FavoriteLikeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E24FE8202163A400639168 /* FavoriteLikeHandler.swift */; };
 		08E2AF0A2020EB6D00473FEF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF082020EB6D00473FEF /* CommentCell.swift */; };
 		08E2AF0B2020EB6D00473FEF /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08E2AF092020EB6D00473FEF /* CommentCell.xib */; };
 		08E2AF0D2020ECD500473FEF /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2AF0C2020ECD500473FEF /* CommentModel.swift */; };
@@ -140,6 +143,9 @@
 		08B881542017B14500912483 /* FavoriteVideoItemDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVideoItemDeserializer.swift; sourceTree = "<group>"; };
 		08B881562017B52600912483 /* ChannelDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		08B881582017B5CA00912483 /* ChannelDetailVideoItemDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailVideoItemDeserializer.swift; sourceTree = "<group>"; };
+		08E24FE420213DEE00639168 /* AddCommentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentHandler.swift; sourceTree = "<group>"; };
+		08E24FE6202140A700639168 /* AddCommentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentDelegate.swift; sourceTree = "<group>"; };
+		08E24FE8202163A400639168 /* FavoriteLikeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLikeHandler.swift; sourceTree = "<group>"; };
 		08E2AF082020EB6D00473FEF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		08E2AF092020EB6D00473FEF /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		08E2AF0C2020ECD500473FEF /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
@@ -271,6 +277,8 @@
 				086FE48E2019B2D70073A5FD /* VideoEntryDeserializer.swift */,
 				08E2AF0C2020ECD500473FEF /* CommentModel.swift */,
 				08E2AF0E2020EDB600473FEF /* CommentDeserializer.swift */,
+				08E24FE420213DEE00639168 /* AddCommentHandler.swift */,
+				08E24FE8202163A400639168 /* FavoriteLikeHandler.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 				08026166201F518A00F85B36 /* VideoPlayerDelegate.swift */,
 				08E2AF082020EB6D00473FEF /* CommentCell.swift */,
 				08E2AF092020EB6D00473FEF /* CommentCell.xib */,
+				08E24FE6202140A700639168 /* AddCommentDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -566,9 +575,11 @@
 				08B881452017779E00912483 /* HomeCollectionViewController.swift in Sources */,
 				08B8815120179CAC00912483 /* ChannelListItemDeserializer.swift in Sources */,
 				08E2AF0D2020ECD500473FEF /* CommentModel.swift in Sources */,
+				08E24FE7202140A700639168 /* AddCommentDelegate.swift in Sources */,
 				08E860DC2016F3FC0068A198 /* TrendingCollectionViewController.swift in Sources */,
 				08B881572017B52600912483 /* ChannelDetailCollectionViewController.swift in Sources */,
 				08B8814F20179C3300912483 /* ChannelListItemModel.swift in Sources */,
+				08E24FE9202163A400639168 /* FavoriteLikeHandler.swift in Sources */,
 				0817C6992014890D00C9B292 /* VideoItemCell.swift in Sources */,
 				0817C69E2014A41600C9B292 /* VideoItemModel.swift in Sources */,
 				0885647A2018DBBA00430AAD /* VideoCommentTableViewCell.swift in Sources */,
@@ -577,6 +588,7 @@
 				089C7CC32013919F0011A341 /* Extensions.swift in Sources */,
 				08E2AF0A2020EB6D00473FEF /* CommentCell.swift in Sources */,
 				0897B31F201AD7FE00E575B1 /* VideoEntrySetupBase.swift in Sources */,
+				08E24FE520213DEE00639168 /* AddCommentHandler.swift in Sources */,
 				0817C695201463D800C9B292 /* TopTabBarCell.swift in Sources */,
 				08200B84201C89FC00A70E9D /* FifTubeManager.swift in Sources */,
 				089C7CC72013A2B50011A341 /* VideoCategoryCell.swift in Sources */,

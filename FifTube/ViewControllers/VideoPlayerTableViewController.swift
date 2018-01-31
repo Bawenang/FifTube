@@ -9,9 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate {
-
-    
+class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate, AddCommentDelegate {
 
     private let reuseIdentifiers : [String] = [ "videoPlayerCell", "videoDescriptionCell", "videoAddCommentCell", "commentCell"]
     
@@ -35,21 +33,7 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        /*
-        self.navigationController?.navigationBar.topItem?.title = " "
-        self.title = " "
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = UIColor.clear
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        self.navigationController?.navigationBar.tintColor = UIColor.clear
-        
-        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.white
-        */
-        
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         self.tableView.register(nibVidPlayer, forCellReuseIdentifier: reuseIdentifiers[0])
@@ -59,6 +43,7 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         
         self.tableView?.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.tableView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.tableView.backgroundColor = UIColor.bgColor
         
         //print("VideoPlayerTableViewController viewDidLoad")
     }
@@ -72,10 +57,14 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         self.videoEntry = entry
         
         //Generate comments
-        let parameterSub : JSON = ["value" : self.videoEntry?.id]
-        let subJSON = JSON(parameterSub)
-        let parameters = [ "currentPage" : currentPage, "username" : FifTubeManager.sharedInstance.getUsername(), "data" : parameterSub.rawValue, "descending" : false ] as [String : Any]
+        let parameterSub : JSON = ["id" : self.videoEntry?.id!]
+        let parameterSub2 : JSON = ["commentDate"]
+        let parameters = [ "currentPage" : currentPage, "username" : FifTubeManager.sharedInstance.getUsername(), "data" : parameterSub.rawValue, "descending" : false, "orderBy" : parameterSub2.rawValue ] as [String : Any]
         CommentDeserializer().deserialize(params: parameters, completion: deserializationCompleted)
+    }
+    
+    func sorterForDate(this:CommentModel, that:CommentModel) -> Bool {
+        return this.commentDate > that.commentDate
     }
     
     func deserializationCompleted(commentItemList: [CommentModel], totalCount: Int) {
@@ -86,9 +75,20 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         } else {
             self.commentList = commentItemList
         }
-    
-        tableView.reloadData()
         
+        self.commentList!.sort(by: sorterForDate)
+        
+        videoEntry?.commentList = self.commentList
+        
+        var paths : [IndexPath] = []
+        for i in 0 ... ((self.commentList?.count)! - 1) {
+            let path = IndexPath(row: i, section: 3)
+            paths.append(path)
+        }
+        
+        tableView.insertRows(at: paths, with: .right)
+        
+        tableView.reloadSections([1,2], with: .none)
     }
     
     func onBackButton() {
@@ -99,16 +99,22 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        if let comments = self.commentList {
-            return self.commentIdOffset + comments.count
-        } else {
-            return self.commentIdOffset
-        }
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        var rowCount = 1
+        
+        if (section == 3) {
+            if let comments = self.commentList {
+                rowCount = comments.count
+            } else {
+                rowCount = 0
+            }
+        }
+        
+        return rowCount
     }
 
     
@@ -118,14 +124,14 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         
                 print("VideoPlayerTableViewController cellForRowAt")
 
-        setupCell(cell, forSection: indexPath.section)
+        setupCell(cell, forIndexPath: indexPath)
         
         return cell
     }
     
-    func setupCell(_ cell: UITableViewCell, forSection: Int)
+    func setupCell(_ cell: UITableViewCell, forIndexPath: IndexPath)
     {
-        switch forSection {
+        switch forIndexPath.section {
         case 0: //videoplayer
             let vidPlayerCell = cell as! VideoPlayerTableViewCell
             vidPlayerCell.setup(withEntry: self.videoEntry!)
@@ -133,11 +139,13 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         case 1:
             let descCel = cell as! VideoDescriptionTableViewCell
             descCel.setup(withEntry: self.videoEntry!)
-        case 2: break
-        default:
+        case 2: 
+            let descCel = cell as! AddCommentTableViewCell
+            descCel.delegate = self
+        case 3:
             let descCel = cell as! CommentCell
-            descCel.setup(withEntry: commentList![forSection - commentIdOffset])
-            break
+            descCel.setup(withEntry: commentList![forIndexPath.row])
+        default: break
         }
     }
     
@@ -149,6 +157,8 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
             return UITableViewAutomaticDimension
         case 2:
             return 164
+        case 3:
+            return UITableViewAutomaticDimension
         default:
             return 0
         }
@@ -162,65 +172,35 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         return 0
     }
     
-    /*
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    // MARK: AddCommentDelegate
+    func onTapCommentButton(text: String) {
+        let nestedParams : JSON = ["id" : videoEntry?.id!]
+        let commentParams = [
+            "commentBy" : FifTubeManager.sharedInstance.getUsername(),
+            "commentDate" : (Date().timeIntervalSince1970 * 1000).rounded(),
+            "text" : text,
+            "fiftubeSetup" : nestedParams.rawValue
+            ] as [String : Any]
         
-        print("VideoPlayerTableViewController viewDidAppear")
-        
-        //Do each cell's setups
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        let setupPlayerCell = self.tableView.cellForRow(at: indexPath) as! VideoEntrySetupBase
-        setupPlayerCell.setup(withEntry: self.videoEntry!)
- 
+        AddCommentHandler().add(params: commentParams, completion: addCommentCompletion)
     }
- */
     
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func addCommentCompletion(comment: CommentModel) {
+        self.totalCount += 1
+        
+        if let _ = commentList{
+            self.commentList!.insert(comment, at: 0)
+        } else {
+            self.commentList = []
+            self.commentList!.append(comment)
+        }
+        
+        videoEntry?.commentList?.append(comment)
+        
+        
+        
+        tableView.insertRows(at: [IndexPath(row: 0, section: 3)], with: .right)
+        
+        tableView.reloadSections([1,2], with: .none)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

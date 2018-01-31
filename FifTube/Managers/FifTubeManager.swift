@@ -43,7 +43,7 @@ class FifTubeManager : NSObject {
                 self.loginRes = JSON(responseData.result.value!)
                 
                 let token = self.loginRes!["token"]
-                print ("token: \(token)")
+                //print ("token: \(token)")
 
             }
             

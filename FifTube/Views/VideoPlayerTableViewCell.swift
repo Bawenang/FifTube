@@ -38,7 +38,8 @@ class VideoPlayerTableViewCell: UITableViewCell, VideoEntrySetupBase, WistiaPlay
         // Initialization code
         print("VideoPlayerTableViewCell awakeFromNib")
         //setup()
-        
+        //self.isUserInteractionEnabled = false
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

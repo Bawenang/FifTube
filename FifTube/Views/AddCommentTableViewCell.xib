@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgS-px-Sz1">
-                        <rect key="frame" x="14" y="14" width="292" height="16"/>
+                        <rect key="frame" x="8" y="14" width="304" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="MF9-OM-CZz"/>
                         </constraints>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aXz-OJ-Gq0">
-                        <rect key="frame" x="14" y="36" width="292" height="90"/>
+                        <rect key="frame" x="8" y="36" width="304" height="90"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="90" id="6am-sL-JQP"/>
@@ -39,7 +39,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbv-Z9-24Y">
-                        <rect key="frame" x="178" y="132" width="128" height="24"/>
+                        <rect key="frame" x="184" y="132" width="128" height="24"/>
                         <color key="backgroundColor" red="0.10980392160000001" green="0.45882352939999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="128" id="alu-1Q-Uol"/>
@@ -49,19 +49,22 @@
                         <state key="normal" title="Submit">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="tapSubmitButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7C8-rv-Lgr"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" red="0.8980392157" green="0.92156862750000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <color key="tintColor" red="0.10980392160000001" green="0.45882352939999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstItem="AgS-px-Sz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="4NW-No-am3"/>
+                    <constraint firstItem="AgS-px-Sz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4NW-No-am3"/>
                     <constraint firstItem="AgS-px-Sz1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="Kue-Sp-loq"/>
-                    <constraint firstItem="aXz-OJ-Gq0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="MWe-cL-htP"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Fbv-Z9-24Y" secondAttribute="trailing" constant="6" id="Rih-sS-b67"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="aXz-OJ-Gq0" secondAttribute="trailing" constant="6" id="SBG-t6-QBB"/>
+                    <constraint firstItem="aXz-OJ-Gq0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="MWe-cL-htP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Fbv-Z9-24Y" secondAttribute="trailing" id="Rih-sS-b67"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="aXz-OJ-Gq0" secondAttribute="trailing" id="SBG-t6-QBB"/>
                     <constraint firstItem="aXz-OJ-Gq0" firstAttribute="top" secondItem="AgS-px-Sz1" secondAttribute="bottom" constant="6" id="eMB-hq-9OU"/>
                     <constraint firstItem="Fbv-Z9-24Y" firstAttribute="top" secondItem="aXz-OJ-Gq0" secondAttribute="bottom" constant="6" id="wCq-zI-AbA"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="AgS-px-Sz1" secondAttribute="trailing" constant="6" id="zsG-Dc-Qi6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="AgS-px-Sz1" secondAttribute="trailing" id="zsG-Dc-Qi6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -8,11 +8,6 @@
 
 import UIKit
 
-class VideoCommentEntryModel {
-    var dateTime : Date = Date.init()
-    var commenter : String = "Mr. Y"
-    var comment : String?
-}
 
 class VideoPlayerEntryModel{
     var id: String?
@@ -27,7 +22,7 @@ class VideoPlayerEntryModel{
     var description: String?
     var favorite: Bool = false
     var liked: Bool = false
-    var commentList: [VideoCommentEntryModel]?
+    var commentList: [CommentModel]?
     
     func createDescription1() -> String {
         

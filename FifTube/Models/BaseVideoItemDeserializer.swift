@@ -38,7 +38,7 @@ class BaseVideoItemDeserializer {
             
             if((responseData.result.value) != nil) {
                 
-                /*
+                
                 if let requestBody = responseData.request?.httpBody {
                     do {
                         let jsonArray = try JSONSerialization.jsonObject(with: requestBody, options: [])
@@ -48,7 +48,7 @@ class BaseVideoItemDeserializer {
                         print("Error: \(error)")
                     }
                 }
-                 */
+                 
                 
                 let resultJSON = JSON(responseData.result.value!)
                 

@@ -13,6 +13,8 @@ class AddCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var commentTextField: UITextView!
     @IBOutlet weak var submitButton: UIButton!
     
+    var delegate: AddCommentDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,8 @@ class AddCommentTableViewCell: UITableViewCell {
         
         submitButton.layer.cornerRadius = 4
         submitButton.layer.masksToBounds = true
+        
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,4 +34,9 @@ class AddCommentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func tapSubmitButton(_ sender: Any) {
+        if !commentTextField.text.isEmpty {
+            delegate?.onTapCommentButton(text: commentTextField.text)
+        }
+    }
 }
