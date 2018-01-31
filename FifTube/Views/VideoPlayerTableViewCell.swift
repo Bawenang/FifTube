@@ -77,6 +77,10 @@ class VideoPlayerTableViewCell: UITableViewCell, VideoEntrySetupBase, WistiaPlay
         
     }
     
+    func close() {
+        self.wistiaPlayerView?.wistiaPlayer?.pause()
+    }
+    
     func splitUrl(_ urlStr: String) {
         //let urlArray = urlStr.components(separatedBy: "/")
         //self.hashedString = urlArray.last

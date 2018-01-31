@@ -49,7 +49,7 @@ class VideoEntryDeserializer {
                 
                 let resultJSON = JSON(responseData.result.value!)
                 
-                //print (responseData.result.value!)
+                print (responseData.result.value!)
                 
                 let entry: VideoPlayerEntryModel = VideoPlayerEntryModel()
                 
@@ -68,6 +68,8 @@ class VideoEntryDeserializer {
                     entry.description = resultJSON["description"].string!
                     entry.createdBy = resultJSON["createdBy"].string!
                     entry.createdDate = Date(timeIntervalSince1970: TimeInterval(resultJSON["createdDate"].double! / 1000))
+                    entry.favorite = resultJSON["favourite"].bool!
+                    entry.liked = resultJSON["liked"].bool!
                 }
                 
                 completion(entry)

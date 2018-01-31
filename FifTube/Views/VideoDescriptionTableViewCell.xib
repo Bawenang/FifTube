@@ -59,10 +59,13 @@
                                         <color key="tintColor" red="0.10980392160000001" green="0.45882352939999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="20" maxX="12" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="20"/>
-                                        <state key="normal" title="Favorite" image="Favorite_bottom_idle">
+                                        <state key="normal" title="Favorite" image="Favorite_listing_idle">
                                             <color key="titleColor" red="0.10980392160000001" green="0.45882352939999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <state key="selected" image="Favorite_listing_active"/>
+                                        <connections>
+                                            <action selector="tapFaveButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LWG-Gc-yec"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTs-Be-NEb">
                                         <rect key="frame" x="159.5" y="0.0" width="157.5" height="44"/>
@@ -74,6 +77,9 @@
                                             <color key="titleColor" red="0.10980392160000001" green="0.45882352939999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <state key="selected" image="Like_active"/>
+                                        <connections>
+                                            <action selector="tapLikeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ez3-gV-r5r"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -129,8 +135,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Favorite_bottom_idle" width="15" height="15"/>
-        <image name="Favorite_listing_active" width="13" height="13"/>
+        <image name="Favorite_listing_active" width="32" height="31"/>
+        <image name="Favorite_listing_idle" width="32" height="30"/>
         <image name="Like_active" width="13" height="13"/>
         <image name="Like_idle" width="13" height="13"/>
     </resources>

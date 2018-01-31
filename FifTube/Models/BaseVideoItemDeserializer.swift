@@ -69,6 +69,7 @@ class BaseVideoItemDeserializer {
                                     item.totalViews = videoList[i]["totalViewer"].int!
                                     item.createdBy = videoList[i]["createdBy"].string!
                                     item.createdDate = Date(timeIntervalSince1970: TimeInterval(videoList[i]["createdDate"].double! / 1000))
+                                    item.isFavorite = videoList[i]["favourite"].bool!
                                     
                                     videoItemList.append(item)
                                 }
@@ -102,7 +103,7 @@ class BaseVideoItemDeserializer {
                     }
                 }
                 
-                //print(resultJSON)
+                print(resultJSON)
                 //completion(videoItemList)
 
             }

@@ -9,6 +9,6 @@
 import UIKit
 
 protocol VideoItemCellDelegate {
-    func tapFaveButton(fromCell: VideoItemCell)
+    func tapFaveButton(fromCell: VideoItemCell, withInitialState: Bool)
     func didSelectVideoAt(fromCell: VideoItemCell)
 }

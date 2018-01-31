@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate, AddCommentDelegate {
+class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate, AddCommentDelegate, FaveLikeDelegate {
 
     private let reuseIdentifiers : [String] = [ "videoPlayerCell", "videoDescriptionCell", "videoAddCommentCell", "commentCell"]
     
@@ -47,6 +47,11 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         
         //print("VideoPlayerTableViewController viewDidLoad")
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let player = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! VideoPlayerTableViewCell
+        player.close()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,9 +86,11 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         videoEntry?.commentList = self.commentList
         
         var paths : [IndexPath] = []
-        for i in 0 ... ((self.commentList?.count)! - 1) {
-            let path = IndexPath(row: i, section: 3)
-            paths.append(path)
+        if self.commentList!.count > 0 {
+            for i in 0 ... ((self.commentList?.count)! - 1) {
+                let path = IndexPath(row: i, section: 3)
+                paths.append(path)
+            }
         }
         
         tableView.insertRows(at: paths, with: .right)
@@ -139,6 +146,7 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         case 1:
             let descCel = cell as! VideoDescriptionTableViewCell
             descCel.setup(withEntry: self.videoEntry!)
+            descCel.faveLikeDelegate = self
         case 2: 
             let descCel = cell as! AddCommentTableViewCell
             descCel.delegate = self
@@ -202,5 +210,30 @@ class VideoPlayerTableViewController: UITableViewController, VideoPlayerDelegate
         tableView.insertRows(at: [IndexPath(row: 0, section: 3)], with: .right)
         
         tableView.reloadSections([1,2], with: .none)
+    }
+    
+    // MARK: FaveLikeDelegate
+    func onTapFave(isFave: Bool) {
+        if isFave {
+            FavoriteLikeHandler().doUnfavorite(videoId: (self.videoEntry?.id)!, completion: completionFave)
+        } else {
+            FavoriteLikeHandler().doFavorite(videoId: (self.videoEntry?.id)!, completion: completionFave)
+        }
+    }
+    
+    func onTapLike(isLike: Bool) {
+        FavoriteLikeHandler().doLike(videoId: (self.videoEntry?.id)!, completion: completionLike)
+    }
+    
+    func completionFave(newState: Bool) {
+        self.videoEntry?.favorite = newState
+        let descCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! VideoDescriptionTableViewCell
+        descCell.setup(withEntry: self.videoEntry!)
+    }
+    
+    func completionLike(newState: Bool) {
+        self.videoEntry?.liked = newState
+        let descCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! VideoDescriptionTableViewCell
+        descCell.setup(withEntry: self.videoEntry!)
     }
 }

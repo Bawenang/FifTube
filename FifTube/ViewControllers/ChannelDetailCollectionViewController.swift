@@ -16,6 +16,7 @@ class ChannelDetailCollectionViewController: UICollectionViewController, UIColle
     var channelId: String?
     var videoPlayerEntry: VideoPlayerEntryModel?
     var channelItem : ChannelListItemModel?
+    var videoItem: VideoItemModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +117,17 @@ class ChannelDetailCollectionViewController: UICollectionViewController, UIColle
     }
     
     func didSelectVideo(videoItem: VideoItemModel) {
-        videoPlayerEntry = VideoEntryDeserializer().deserializeFromMock()
+        //videoPlayerEntry = VideoEntryDeserializer.getMock()
+        VideoEntryDeserializer().deserialize(videoId: videoItem.id, completion: deserializationCompleted)
+        self.videoItem = videoItem
+        
+        
+    }
+    
+    func deserializationCompleted(videoEntry: VideoPlayerEntryModel) {
+        
+        self.videoPlayerEntry = videoEntry
+        self.videoPlayerEntry?.thumbnail = self.videoItem?.thumbnail
         
         performSegue(withIdentifier: "videoDetailSegue", sender: self)
     }

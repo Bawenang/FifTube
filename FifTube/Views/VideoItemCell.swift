@@ -68,7 +68,7 @@ class VideoItemCell: UICollectionViewCell {
     }
     
     @IBAction func tapFaveButton(_ sender: Any) {
-        self.delegate?.tapFaveButton(fromCell: self)
+        self.delegate?.tapFaveButton(fromCell: self, withInitialState: faveButton.isSelected)
     }
     
     func setup(thumbnailImageName: String, profileImageName: String, title: String, description: String, isFavorite: Bool)

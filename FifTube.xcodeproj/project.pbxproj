@@ -18,6 +18,7 @@
 		0817C6A42014B8BE00C9B292 /* VideoItemCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817C6A32014B8BE00C9B292 /* VideoItemCollectionView.swift */; };
 		0817C6A62014BEED00C9B292 /* RecentVideoItemDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817C6A52014BEED00C9B292 /* RecentVideoItemDeserializer.swift */; };
 		08200B84201C89FC00A70E9D /* FifTubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08200B83201C89FC00A70E9D /* FifTubeManager.swift */; };
+		0830AE7E20221BE900E6DD31 /* FaveLikeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0830AE7D20221BE900E6DD31 /* FaveLikeDelegate.swift */; };
 		0843E63A20163918001957C3 /* TopBarParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0843E63920163918001957C3 /* TopBarParent.swift */; };
 		086D4033201DCC7600EFDFC9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D4032201DCC7600EFDFC9 /* LoadingViewController.swift */; };
 		086FE48720197AA20073A5FD /* VideoPlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FE48620197AA20073A5FD /* VideoPlayerTableViewController.swift */; };
@@ -98,6 +99,7 @@
 		0817C6A32014B8BE00C9B292 /* VideoItemCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemCollectionView.swift; sourceTree = "<group>"; };
 		0817C6A52014BEED00C9B292 /* RecentVideoItemDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentVideoItemDeserializer.swift; sourceTree = "<group>"; };
 		08200B83201C89FC00A70E9D /* FifTubeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifTubeManager.swift; sourceTree = "<group>"; };
+		0830AE7D20221BE900E6DD31 /* FaveLikeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaveLikeDelegate.swift; sourceTree = "<group>"; };
 		0843E63920163918001957C3 /* TopBarParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarParent.swift; sourceTree = "<group>"; };
 		086D4032201DCC7600EFDFC9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		086FE48620197AA20073A5FD /* VideoPlayerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerTableViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				08E2AF082020EB6D00473FEF /* CommentCell.swift */,
 				08E2AF092020EB6D00473FEF /* CommentCell.xib */,
 				08E24FE6202140A700639168 /* AddCommentDelegate.swift */,
+				0830AE7D20221BE900E6DD31 /* FaveLikeDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				08B8814120176C4700912483 /* TopViewsVideoItemDeserializer.swift in Sources */,
 				08E2AF0F2020EDB600473FEF /* CommentDeserializer.swift in Sources */,
 				089C7C872013010C0011A341 /* AppDelegate.swift in Sources */,
+				0830AE7E20221BE900E6DD31 /* FaveLikeDelegate.swift in Sources */,
 				08B881452017779E00912483 /* HomeCollectionViewController.swift in Sources */,
 				08B8815120179CAC00912483 /* ChannelListItemDeserializer.swift in Sources */,
 				08E2AF0D2020ECD500473FEF /* CommentModel.swift in Sources */,

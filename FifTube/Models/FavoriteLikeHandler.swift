@@ -13,9 +13,11 @@ import SwiftyJSON
 class FavoriteLikeHandler {
     let headerEncoding : String = "application/json"
     
-    var command : String = "https://fema-dev.fifgroup.co.id/fema-video-service/api/m/comment/"
+    let faveCmd : String = "https://fema-dev.fifgroup.co.id/fema-video-service/api/m/fiftube/favourite/"
+    let unfaveCmd : String = "https://fema-dev.fifgroup.co.id/fema-video-service/api/m/fiftube/favourite/delete/"
+    let likeCmd : String = "https://fema-dev.fifgroup.co.id/fema-video-service/api/m/fiftube/like/"
     
-    func doFavorite(params: [String:Any], completion: @escaping (CommentModel)->Void) {
+    func doFavorite(videoId: String, completion: @escaping (Bool)->Void) {
         //func deserialize(params: [String:Any]) -> [VideoItemModel]{
         
         let headers = [
@@ -23,8 +25,9 @@ class FavoriteLikeHandler {
             "Content-Type" : headerEncoding
         ]
         
+        let command = "\(faveCmd)\(videoId)"
         
-        Alamofire.request(command, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
+        Alamofire.request(command, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
             
             if let requestBody = responseData.request?.httpBody {
                 do {
@@ -36,19 +39,101 @@ class FavoriteLikeHandler {
                 }
             }
             
-            if((responseData.result.value) != nil) {
+            if((responseData.result.value) == nil) {
                 
+      
                 
-                print (responseData.result.value!)
+                completion(true)
+            } else {
+                let resultJSON : JSON? = JSON(responseData.result.value!)
                 
-                let comment: CommentModel = CommentModel()
+                if let json = resultJSON {
+                    if let errCode = json["status"].int {
+                        if let errMessage = json["message"].string {
+                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func doUnfavorite(videoId: String, completion: @escaping (Bool)->Void) {
+        //func deserialize(params: [String:Any]) -> [VideoItemModel]{
+        
+        let headers = [
+            "X-Auth-Token" : FifTubeManager.sharedInstance.getToken(),
+            "Content-Type" : headerEncoding
+        ]
+        
+        let command = "\(unfaveCmd)\(videoId)"
+        
+        Alamofire.request(command, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
+            
+            if let requestBody = responseData.request?.httpBody {
+                do {
+                    let jsonArray = try JSONSerialization.jsonObject(with: requestBody, options: [])
+                    print("Array: \(jsonArray)")
+                }
+                catch {
+                    print("Error: \(error)")
+                }
+            }
+            
+            if((responseData.result.value) == nil) {
                 
-                comment.commentBy = params["commentBy"] as! String
-                comment.commentDate = Date(timeIntervalSince1970: (params["commentDate"] as! Double) / 1000)
-                comment.text = params["text"] as! String
+                completion(false)
+            } else {
+                let resultJSON : JSON? = JSON(responseData.result.value!)
                 
+                if let json = resultJSON {
+                    if let errCode = json["status"].int {
+                        if let errMessage = json["message"].string {
+                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func doLike(videoId: String, completion: @escaping (Bool)->Void) {
+        //func deserialize(params: [String:Any]) -> [VideoItemModel]{
+        
+        let headers = [
+            "X-Auth-Token" : FifTubeManager.sharedInstance.getToken(),
+            "Content-Type" : headerEncoding
+        ]
+        
+        let command = "\(likeCmd)\(videoId)"
+        
+        Alamofire.request(command, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
+            
+            if let requestBody = responseData.request?.httpBody {
+                do {
+                    let jsonArray = try JSONSerialization.jsonObject(with: requestBody, options: [])
+                    print("Array: \(jsonArray)")
+                }
+                catch {
+                    print("Error: \(error)")
+                }
+            }
+            
+            if((responseData.result.value) == nil) {
                 
-                completion(comment)
+                completion(true)
+            } else {
+                let resultJSON : JSON? = JSON(responseData.result.value!)
+                
+                if let json = resultJSON {
+                    if let errCode = json["status"].int {
+                        if let errMessage = json["message"].string {
+                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
+                        }
+                    }
+                }
             }
         }
         

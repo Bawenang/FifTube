@@ -29,6 +29,7 @@ class VideoCategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICol
     let reusableCellId = "videoItemCell"
     let nibVideoItemCell = UINib(nibName: "VideoItemCell", bundle: nil)
     
+    var tapFaveVideo : VideoItemCell?
     
     //Collection view for menu buttons
     lazy var collectionView: UICollectionView = {
@@ -133,10 +134,19 @@ class VideoCategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICol
         
     }
     
-    func tapFaveButton(fromCell sender: VideoItemCell) {
-        //let indexPath = collectionView.indexPath(for: sender)
-        
-        sender.toggleFave()
+    func tapFaveButton(fromCell sender: VideoItemCell, withInitialState: Bool) {
+        let indexPath = self.collectionView.indexPath(for: sender)
+        self.tapFaveVideo = sender
+        if withInitialState {
+            FavoriteLikeHandler().doUnfavorite(videoId: videoItemList![(indexPath?.item)!].id, completion: completion)
+        }else {
+            FavoriteLikeHandler().doFavorite(videoId: videoItemList![(indexPath?.item)!].id, completion: completion)
+        }
+        //sender.toggleFave()
+    }
+    
+    func completion(isFave: Bool) {
+        self.tapFaveVideo?.toggleFave()
     }
     
     func didSelectVideoAt(fromCell cell: VideoItemCell) {

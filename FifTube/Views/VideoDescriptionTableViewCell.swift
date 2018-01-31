@@ -19,6 +19,8 @@ class VideoDescriptionTableViewCell: UITableViewCell {
     @IBOutlet weak var faveButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     
+    var faveLikeDelegate: FaveLikeDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,7 +42,13 @@ class VideoDescriptionTableViewCell: UITableViewCell {
         description_3.text = withEntry.description
         
         faveButton.isSelected = withEntry.favorite
-        faveButton.isSelected = withEntry.liked
+        likeButton.isSelected = withEntry.liked
     }
     
+    @IBAction func tapFaveButton(_ sender: Any) {
+        self.faveLikeDelegate?.onTapFave(isFave: faveButton.isSelected)
+    }
+    @IBAction func tapLikeButton(_ sender: Any) {
+        self.faveLikeDelegate?.onTapLike(isLike: likeButton.isSelected)
+    }
 }
