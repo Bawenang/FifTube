@@ -50,7 +50,7 @@ class FavoriteLikeHandler {
                 if let json = resultJSON {
                     if let errCode = json["status"].int {
                         if let errMessage = json["message"].string {
-                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
+                            print("Error setting favorite. CODE (\(errCode)) : \(errMessage)")
                         }
                     }
                 }
@@ -69,7 +69,7 @@ class FavoriteLikeHandler {
         
         let command = "\(unfaveCmd)\(videoId)"
         
-        Alamofire.request(command, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
+        Alamofire.request(command, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseData) -> Void in
             
             if let requestBody = responseData.request?.httpBody {
                 do {
@@ -81,16 +81,19 @@ class FavoriteLikeHandler {
                 }
             }
             
-            if((responseData.result.value) == nil) {
+            if((responseData.result.value) != nil) {
                 
-                completion(false)
-            } else {
-                let resultJSON : JSON? = JSON(responseData.result.value!)
+                let resultJSON = JSON(responseData.result.value!)
+                //print("Unfave JSON: \(resultJSON)")
                 
-                if let json = resultJSON {
-                    if let errCode = json["status"].int {
-                        if let errMessage = json["message"].string {
-                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
+                if let isOk = resultJSON["statusCode"].int {
+                    if isOk == 0 {
+                        completion(false)
+                    }
+                } else {
+                        if let errCode = resultJSON["status"].int {
+                            if let errMessage = resultJSON["message"].string {
+                                print("Error setting unfavorite. CODE (\(errCode)) : \(errMessage)")
                         }
                     }
                 }
@@ -130,7 +133,7 @@ class FavoriteLikeHandler {
                 if let json = resultJSON {
                     if let errCode = json["status"].int {
                         if let errMessage = json["message"].string {
-                            print("Error getting comments. CODE (\(errCode)) : \(errMessage)")
+                            print("Error setting like. CODE (\(errCode)) : \(errMessage)")
                         }
                     }
                 }
